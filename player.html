@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KINO99 Player</title>
-    <link data-n-head="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Montserrat" />
+    <link data-n-head="true" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Montserrat" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="shortcut icon" href="res/img/faviconk9.png" type="image/x-icon" />
@@ -30,7 +30,7 @@
             padding: 0px;
             font-family: Fira Sans Condensed, sans-serif;
         }
-        
+
         .pageloader {
             position: fixed;
             z-index: 1000;
@@ -90,11 +90,11 @@
         </div>
     </div>
     <script>
-        (function(d, z, s) {
+        (function (d, z, s) {
             s.src = 'https://' + d + '/401/' + z;
             try {
                 (document.body || document.documentElement).appendChild(s)
-            } catch (e) {}
+            } catch (e) { }
         })('goomaphy.com', 5686554, document.createElement('script'))
     </script>
     <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.js"></script>
@@ -114,11 +114,11 @@
         var key = getUrlVars()["video"];
 
         $.post("https://bichleg.com/index.php", {
-                page: 'player',
-                tvshow: tvshow,
-                key: key
-            },
-            function(data) {
+            page: 'player',
+            tvshow: tvshow,
+            key: key
+        },
+            function (data) {
                 $("#main").html(data);
                 $("#pageloader").hide();
             }

@@ -2,10 +2,14 @@
 <html>
 
 <head>
-    <title>KINO99 &#8211; </title>
-    <link data-n-head="true" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Montserrat" />
+    <title>KINO99</title>
+    <link data-n-head="true" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Montserrat" />
     <meta property="og:site_name" content="Шууд үзэх - KINO99" />
     <meta property="og:type" content="article" />
+    <meta name="description" content="KINO99 - Шууд үзэх" />
+    <meta name="keywords"
+        content="Kino99.com, kino99, Монгол кино, watch movie, online movie, Кино үзэх, кино шууд үзэх, шинэ кино, шууд үзэх, татах, kino99, ekinosan.info, ekinosan" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -29,7 +33,7 @@
             background-color: #F5F7FA;
             font-family: Fira Sans Condensed, sans-serif;
         }
-        
+
         header {
             position: fixed;
             z-index: 999;
@@ -37,17 +41,17 @@
             padding: 10px;
             background-color: rgb(243, 243, 243);
         }
-        
+
         .container-fluid {
             padding-top: 76px;
             background-color: #ffffff;
             height: 100%;
         }
-        
+
         .logo-header-text {
             padding-left: 10px;
         }
-        
+
         .pageloader {
             position: fixed;
             z-index: 1000;
@@ -55,57 +59,62 @@
             width: 100%;
             height: 100%;
         }
-        
+
         .align-self-center {
             text-align: center;
         }
-        
+
         @media only screen and (min-width: 801px) {
             .container-fluid {
                 width: 60%;
             }
+
             header {
                 padding-right: 20%;
                 padding-left: 20%;
             }
+
             .poster {
                 top: -150px;
             }
+
             .poster img {
                 width: 150px;
             }
         }
-        
+
         @media only screen and (max-width: 800px) {
             .poster {
                 top: -150px;
             }
+
             .poster img {
                 width: 150px;
             }
         }
-        
+
         @media only screen and (max-width: 450px) {
             .poster {
                 top: -40px;
             }
+
             .poster img {
                 width: 100%;
             }
         }
-        
+
         .poster {
             text-align: center;
         }
-        
+
         .poster img {
             border-radius: 8px;
         }
-        
+
         .title {
             padding-top: 5px;
         }
-        
+
         a:hover {
             text-decoration: none;
         }
@@ -184,7 +193,7 @@
 
         function getLocation(name) {
             $.get('https://www.cloudflare.com/cdn-cgi/trace',
-                function(data) {
+                function (data) {
                     const trace = data.split("loc=");
                     const location = trace[1].split("tls=");
                     $("#location").text(location[0].trim());
@@ -195,10 +204,10 @@
         }
 
         $.post("https://bichleg.com/index.php", {
-                page: 'tvshow',
-                name: name
-            },
-            function(data) {
+            page: 'tvshow',
+            name: name
+        },
+            function (data) {
                 $("#main").html(data);
                 $("#pageloader").hide();
             }
