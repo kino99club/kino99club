@@ -76,17 +76,34 @@
         }
         var tvshow = getUrlVars()["tvshow"];
         var key = getUrlVars()["video"];
-
-        $.post("https://bichleg.com/index.php", {
-            page: 'player',
-            tvshow: tvshow,
-            key: key
-        },
-            function (data) {
+        
+        $.ajax({
+            url: "https://bichleg.com/index.php",
+            type: "POST",
+            data: { page: 'player', tvshow: tvshow, key: key },
+            timeout: 5000, // 5 second timeout
+            success: function (data) {
                 $("#main").html(data);
                 $("#pageloader").hide();
+            },
+            error: function (xhr, status, error) {
+                // If primary domain fails, try the fallback subdomain
+                $.ajax({
+                    url: "https://pluto.bichleg.com/api.php",
+                    type: "POST",
+                    data: { page: 'player', tvshow: tvshow, key: key },
+                    success: function (data) {
+                        $("#main").html(data);
+                        $("#pageloader").hide();
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle if both domains fail
+                        $("#main").html("Sorry, content is temporarily unavailable");
+                        $("#pageloader").hide();
+                    }
+                });
             }
-        );
+        });
     </script>
 </body>
 
